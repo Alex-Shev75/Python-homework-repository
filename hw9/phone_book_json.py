@@ -1,7 +1,11 @@
 import json
 
-with open('json_pb.json', 'r+') as file_open:
-    my_phone_book = json.loads(file_open.read())
+try:
+    my_phone_book = dict(open('json_pb.json', 'x+'))
+
+except FileExistsError:
+    with open('json_pb.json', 'r+') as file_open:
+        my_phone_book = json.loads(file_open.read())
 
 
 def user_add(user):

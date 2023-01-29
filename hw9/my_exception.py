@@ -1,25 +1,31 @@
 from _datetime import datetime
 
 
-class MyException:
-    def __enter__(self):
+def exception():
+    print("=" * 10)
+    try:
+        a = int(input('Enter any number - '))
+        b = int(input('Enter any number - '))
+        return print(a / b)
+    except ZeroDivisionError as err_1:
+        t = datetime.now()
+        print(f'Error - {err_1} - occurred at {t.strftime("%H:%M:%S")}')
+        log_1 = str(f'Error - {err_1} - occurred at {t.strftime("%H:%M:%S")}')
+        try:
+            with open('file.txt', 'x+') as save_err:
+                save_err.write(log_1)
+        except FileExistsError:
+            with open('file.txt', 'a+') as save_err:
+                save_err.write(f'\n{log_1}')
+    except ValueError as err_2:
+        t = datetime.now()
+        print(f'Error - {err_2} - occurred at {t.strftime("%H:%M:%S")}')
+        log_2 = str(f'Error - {err_2} - occurred at {t.strftime("%H:%M:%S")}')
+        with open('file.txt', 'a+') as save_err:
+            save_err.write(f'\n{log_2}')
+    finally:
         print("=" * 10)
 
-    def __exit__(self, exc_type, exc_val, exc_tb):
-        t = datetime.now()
-        if exc_type:
-            print(f'Error - \"{exc_val}\" a occurred at {t.strftime("%H:%M:%S")}')
-            log = str(f'Error - \"{exc_val}\" occurred at {t.strftime("%H:%M:%S")}')
-            with open('file.txt', 'x') as exc_file:
-                exc_file.write(log)
-        print('=' * 10)
-        return True
 
-
-with MyException():
-    a = 1
-    b = 2
-    # c = 3
-    print(a ** b ** c)
-
-print('\nEnd of program')
+exception()
+print('Program completed')
