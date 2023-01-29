@@ -7,6 +7,7 @@ def decorator(func):
         print(f'====\nFunction call time - {t.strftime("%H:%M:%S")}\n====')
         func(*args, **kwargs)
         print(f'====\nFunction ended\n====\n')
+        return func(*args, **kwargs)
 
     return wrapper
 
