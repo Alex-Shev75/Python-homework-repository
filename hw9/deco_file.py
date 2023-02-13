@@ -5,12 +5,10 @@ def decorator(func):
     def wrapper(*args, **kwargs):
         t = datetime.now()
         print(f'====\nFunction call time - {t.strftime("%H:%M:%S")}\n====')
-        func(*args, **kwargs)
         with open('deco.txt', 'a+') as deco_file:
             deco_file.write(f'\nI decorate {str(func)}')
         print(f'====\nFunction ended\n====\n')
         return func(*args, **kwargs)
-
     return wrapper
 
 
