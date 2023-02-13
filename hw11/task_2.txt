@@ -1,0 +1,6 @@
+INSERT INTO users(first_name) VALUES ('Alex')
+INSERT INTO users(last_name) VALUES ('Shevchuk')
+INSERT INTO users(first_name, age) VALUES ('Alex', 47)
+INSERT INTO users(last_name, age) VALUES ('Shevchuk', 47)
+INSERT INTO users(first_name, last_name) VALUES ('Alex', 'Shevchuk')
+INSERT INTO users (first_name, last_name, age) VALUES ('Alex', 'Shevchuk', 47)
