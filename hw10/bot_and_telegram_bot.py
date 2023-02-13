@@ -25,7 +25,6 @@ class TelegramBot(Bot):
 
     def set_url(self, url):
         self.url = url
-        print(self.url)
 
     def set_chat_id(self, chat_id):
         self.chat_id = chat_id

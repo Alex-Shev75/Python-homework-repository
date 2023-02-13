@@ -1,10 +1,9 @@
 class User:
     def __init__(self, user):
-        self.user = user.lower()
-        self.user = user.upper()
+        self.user = user
 
     def __eq__(self, other):
-        return self.user == other
+        return self.user.lower() == other.user.lower()
 
 
 first_user = User('joker')
